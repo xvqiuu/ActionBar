@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.actionbar.MainActivity
-import com.example.actionbar.SecondActivity
+import com.example.actionbar.MainActivity.Companion.viewPager2
 import com.example.actionbar.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
+    //utk memanggil variabel di suatu kelas tanpa melalui sebuah objek
     companion object {
         var username = ""
         var email = ""
@@ -28,45 +28,51 @@ class RegisterFragment : Fragment() {
         // Set click listener for the login button
         with(binding) {
             btnRegister.setOnClickListener {
-                val username = editTxtUsernameRegister.text.toString()
-                val email = editTxtEmailRegister.text.toString()
-                val phone = editTxtPhoneRegister.text.toString()
-                val password = editTxtPasswordRegister.text.toString()
+                val inputUsername = editTxtUsernameRegister.text.toString()
+                val inputEmail = editTxtEmailRegister.text.toString()
+                val inputPhone = editTxtPhoneRegister.text.toString()
+                val inputPassword = editTxtPasswordRegister.text.toString()
 
-                if (username.isEmpty()) {
-                    editTxtUsernameRegister.error = "Masukkan username"
+                if (inputUsername.isEmpty()) {
+                    editTxtUsernameRegister.error = "Username harus diisi"
                     return@setOnClickListener
                 }
 
-                if (email.isEmpty()) {
-                    editTxtEmailRegister.error = "Masukkan password"
+                if (inputEmail.isEmpty()) {
+                    editTxtEmailRegister.error = "Email harus diisi"
                     return@setOnClickListener
                 }
 
-                if (phone.isEmpty()) {
-                    editTxtPhoneRegister.error = "Masukkan password"
+                if (inputPhone.isEmpty()) {
+                    editTxtPhoneRegister.error = "Phone harus diisi"
                     return@setOnClickListener
                 }
 
-                if (password.isEmpty()) {
-                    editTxtPasswordRegister.error = "Masukkan password"
+                if (inputPassword.isEmpty()) {
+                    editTxtPasswordRegister.error = "Password harus diisi"
                     return@setOnClickListener
                 }
 
-                if (username.isEmpty() && password.isEmpty()) {
+                username = inputUsername
+                email = inputEmail
+                phone = inputPhone
+                password = inputPassword
 
-                    editTxtUsernameRegister.text.clear()
-                    editTxtEmailRegister.text.clear()
-                    editTxtPhoneRegister.text.clear()
-                    editTxtPasswordRegister.text.clear()
-                    checkboxRegister.isChecked = false
-                }
+                editTxtUsernameRegister.text.clear()
+                editTxtEmailRegister.text.clear()
+                editTxtPhoneRegister.text.clear()
+                editTxtPasswordRegister.text.clear()
+
+                binding.checkboxRegister.isChecked = false
+
             }
-            // Set click listener for the "Register" text
-            binding.txtLogin.setOnClickListener {
-                MainActivity.viewPager2.setCurrentItem(0)
-            }
-            return binding.root
+            viewPager2.setCurrentItem(1)
         }
+        // Set click listener for the "Register" text
+        binding.txtLogin.setOnClickListener {
+           viewPager2.setCurrentItem(1)
+        }
+        return binding.root
     }
 }
+

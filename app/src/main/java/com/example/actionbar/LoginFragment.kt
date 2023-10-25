@@ -1,6 +1,5 @@
 package com.example.actionbar
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -43,7 +42,9 @@ class LoginFragment : Fragment() {
 
                     editTxtUsernameLogin.text.clear()
                     editTxtPasswordLogin.text.clear()
-                    checkboxLogin.isChecked = false
+
+                    binding.checkboxLogin.isChecked = false
+
                 }
             }
             // Set click listener for the "Register" text

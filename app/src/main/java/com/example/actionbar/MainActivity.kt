@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var mediator: TabLayoutMediator
     lateinit var viewPager1: ViewPager2
 
-
     companion object {
         lateinit var viewPager2: ViewPager2
     }
