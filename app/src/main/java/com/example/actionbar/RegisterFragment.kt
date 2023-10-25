@@ -1,12 +1,12 @@
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.example.actionbar.MainActivity.Companion.viewPager2
-import com.example.actionbar.R
+import com.example.actionbar.MainActivity
+import com.example.actionbar.SecondActivity
+import com.example.actionbar.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
     companion object {
@@ -16,58 +16,57 @@ class RegisterFragment : Fragment() {
         var password = ""
     }
 
+    lateinit var binding : FragmentRegisterBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for this fragment
+        binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
-        val view = inflater.inflate(R.layout.fragment_register, container, false)
+        // Set click listener for the login button
+        with(binding) {
+            btnRegister.setOnClickListener {
+                val username = editTxtUsernameRegister.text.toString()
+                val email = editTxtEmailRegister.text.toString()
+                val phone = editTxtPhoneRegister.text.toString()
+                val password = editTxtPasswordRegister.text.toString()
 
-        val inputUsername = view.findViewById<EditText>(R.id.edit_txt_username_register)
-        val inputPhone = view.findViewById<EditText>(R.id.edit_txt_phone_register)
-        val inputEmail = view.findViewById<EditText>(R.id.edit_txt_email_register)
-        val inputPassword = view.findViewById<EditText>(R.id.edit_txt_password_register)
+                if (username.isEmpty()) {
+                    editTxtUsernameRegister.error = "Masukkan username"
+                    return@setOnClickListener
+                }
 
-        view.findViewById<View>(R.id.btn_register).setOnClickListener() {
-            if (inputUsername.text.toString().isEmpty()) {
-                view.findViewById<EditText>(R.id.edit_txt_username_register).error = "Masukkan username"
-                return@setOnClickListener
+                if (email.isEmpty()) {
+                    editTxtEmailRegister.error = "Masukkan password"
+                    return@setOnClickListener
+                }
+
+                if (phone.isEmpty()) {
+                    editTxtPhoneRegister.error = "Masukkan password"
+                    return@setOnClickListener
+                }
+
+                if (password.isEmpty()) {
+                    editTxtPasswordRegister.error = "Masukkan password"
+                    return@setOnClickListener
+                }
+
+                if (username.isEmpty() && password.isEmpty()) {
+
+                    editTxtUsernameRegister.text.clear()
+                    editTxtEmailRegister.text.clear()
+                    editTxtPhoneRegister.text.clear()
+                    editTxtPasswordRegister.text.clear()
+                    checkboxRegister.isChecked = false
+                }
             }
-
-            if (inputPhone.text.toString().isEmpty()) {
-                view.findViewById<EditText>(R.id.edit_txt_phone_register).error = "Masukkan phone"
-                return@setOnClickListener
+            // Set click listener for the "Register" text
+            binding.txtLogin.setOnClickListener {
+                MainActivity.viewPager2.setCurrentItem(0)
             }
-
-            if (inputEmail.text.toString().isEmpty()) {
-                view.findViewById<EditText>(R.id.edit_txt_email_register).error = "Masukkan email"
-                return@setOnClickListener
-            }
-
-            if (inputPassword.text.toString().isEmpty()) {
-                view.findViewById<EditText>(R.id.edit_txt_password_register).error = "Masukkan password"
-                return@setOnClickListener
-            }
-
-            username = inputUsername.text.toString()
-            password = inputPassword.text.toString()
-            phone = inputPhone.text.toString()
-            email = inputEmail.text.toString()
-
-            inputUsername.text.clear()
-            inputPassword.text.clear()
-            inputEmail.text.clear()
-            inputPhone.text.clear()
-
-            with(view) {
-                findViewById<CheckBox>(R.id.checkbox_register).isChecked = false
-            }
-            viewPager2.setCurrentItem(1)
+            return binding.root
         }
-        view.findViewById<View>(R.id.txt_login).setOnClickListener() {
-            viewPager2.setCurrentItem(1)
-        }
-        return view
     }
 }
-
