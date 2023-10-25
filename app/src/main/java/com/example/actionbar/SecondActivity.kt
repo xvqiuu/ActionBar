@@ -5,13 +5,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.actionbar.databinding.ActivityMainBinding
+import com.example.actionbar.databinding.ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         title = "Dashboard"
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        val binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 

@@ -12,11 +12,6 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var mediator: TabLayoutMediator
     lateinit var viewPager1: ViewPager2
-
-    companion object {
-        lateinit var viewPager2: ViewPager2
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         title = " "
@@ -24,9 +19,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         with(binding) {
-            viewPager1 = viewPager
             viewPager.adapter = TabAdapter(supportFragmentManager, this@MainActivity.lifecycle)
             //menghubungkan ViewPager dengan TabLayout
+            viewPager1 = viewPager
             mediator = TabLayoutMediator(tabLayout, viewPager)
             {tab, position ->
                 when(position) {
@@ -37,8 +32,11 @@ class MainActivity : AppCompatActivity() {
             }
             //menghubungkan mediator yang telah dikonfigurasi dengan TabLayout dan ViewPager2
             mediator.attach()
+            viewPager1Companion = viewPager1
 
-            viewPager2 = viewPager2
         }
+    }
+    companion object {
+        lateinit var viewPager1Companion : ViewPager2
     }
 }

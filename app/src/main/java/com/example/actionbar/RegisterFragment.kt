@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.actionbar.MainActivity.Companion.viewPager2
+import com.example.actionbar.MainActivity
 import com.example.actionbar.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
@@ -66,11 +66,11 @@ class RegisterFragment : Fragment() {
                 binding.checkboxRegister.isChecked = false
 
             }
-            viewPager2.setCurrentItem(1)
+            MainActivity.viewPager1Companion.setCurrentItem(1)
         }
         // Set click listener for the "Register" text
         binding.txtLogin.setOnClickListener {
-           viewPager2.setCurrentItem(1)
+           MainActivity.viewPager1Companion.setCurrentItem(1)
         }
         return binding.root
     }

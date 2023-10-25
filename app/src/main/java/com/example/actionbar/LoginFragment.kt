@@ -36,8 +36,8 @@ class LoginFragment : Fragment() {
                     return@setOnClickListener
                 }
 
-                if (username.isEmpty() && password.isEmpty()) {
-                    val intent = Intent(activity, SecondActivity::class.java)
+                if (!username.isEmpty() && !password.isEmpty()) {
+                    val intent = Intent(this@LoginFragment.requireActivity(), SecondActivity::class.java)
                     startActivity(intent)
 
                     editTxtUsernameLogin.text.clear()
@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
             }
             // Set click listener for the "Register" text
             binding.txtRegister.setOnClickListener {
-                MainActivity.viewPager2.setCurrentItem(0)
+                MainActivity.viewPager1Companion.setCurrentItem(0)
             }
             return binding.root
         }
