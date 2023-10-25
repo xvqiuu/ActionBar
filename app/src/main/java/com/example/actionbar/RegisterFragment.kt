@@ -1,4 +1,5 @@
-import android.content.Intent
+package com.example.actionbar
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -65,8 +66,9 @@ class RegisterFragment : Fragment() {
 
                 binding.checkboxRegister.isChecked = false
 
+                MainActivity.viewPager1Companion.setCurrentItem(1)
+
             }
-            MainActivity.viewPager1Companion.setCurrentItem(1)
         }
         // Set click listener for the "Register" text
         binding.txtLogin.setOnClickListener {

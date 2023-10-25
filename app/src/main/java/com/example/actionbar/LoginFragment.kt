@@ -27,12 +27,12 @@ class LoginFragment : Fragment() {
                 val password = editTxtPasswordLogin.text.toString()
 
                 if (username.isEmpty()) {
-                    editTxtUsernameLogin.error = "Masukkan username"
+                    editTxtUsernameLogin.error = "Username harus diisi"
                     return@setOnClickListener
                 }
 
                 if (password.isEmpty()) {
-                    editTxtPasswordLogin.error = "Masukkan password"
+                    editTxtPasswordLogin.error = "Password harus diisi"
                     return@setOnClickListener
                 }
 

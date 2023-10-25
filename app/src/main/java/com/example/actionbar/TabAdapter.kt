@@ -1,6 +1,5 @@
 package com.example.actionbar
 
-import RegisterFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle

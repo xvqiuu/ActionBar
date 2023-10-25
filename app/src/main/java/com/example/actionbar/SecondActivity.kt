@@ -15,13 +15,11 @@ class SecondActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    // dipanggil ketika activity pertama kali dibuat untuk menampilkan menu options
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_options, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
-    // dipanggil ketika pengguna memilih salah satu item dari menu options
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_logout -> {

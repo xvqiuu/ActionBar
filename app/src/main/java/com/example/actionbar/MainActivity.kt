@@ -8,6 +8,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
 
+    //membuat binding
     private lateinit var binding : ActivityMainBinding
 
     lateinit var mediator: TabLayoutMediator
@@ -19,9 +20,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         with(binding) {
-            viewPager.adapter = TabAdapter(supportFragmentManager, this@MainActivity.lifecycle)
-            //menghubungkan ViewPager dengan TabLayout
             viewPager1 = viewPager
+            //Adapter ini digunakan untuk mengelola tampilan tab dan kontennya.
+            viewPager.adapter = TabAdapter(supportFragmentManager, this@MainActivity.lifecycle)
             mediator = TabLayoutMediator(tabLayout, viewPager)
             {tab, position ->
                 when(position) {
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+    //memanggil variabel di suatu kelas tanpa melalui sebuah objek
     companion object {
         lateinit var viewPager1Companion : ViewPager2
     }
